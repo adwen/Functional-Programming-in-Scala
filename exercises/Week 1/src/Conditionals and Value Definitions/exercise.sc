@@ -6,6 +6,7 @@ def or(x: Boolean, y: => Boolean) : Boolean =
   if (!x) y
   else true
 
+
 and(x = true, y = false)
 // return false
 and(x = false, y = false)
