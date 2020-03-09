@@ -1,11 +1,10 @@
-def and(x: Boolean, y: Boolean) : Boolean =
-  if (x) true
+def and(x: Boolean, y: => Boolean) : Boolean =
+  if (x) y
   else false
 
-def or(x: Boolean, y: Boolean) : Boolean =
-  if (x) true
-  else if (y) true
-  else false
+def or(x: Boolean, y: => Boolean) : Boolean =
+  if (!x) y
+  else true
 
 
 and(x = true, y = false)
@@ -17,6 +16,7 @@ and(x = true, y = true)
 and(x = false, y = true)
 // return false
 or(x = true, y = false)
+// return true
 or(x = false, y = false)
 // return false
 or(x = true, y = true)
