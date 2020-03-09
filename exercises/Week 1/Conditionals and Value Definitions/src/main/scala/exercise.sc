@@ -1,7 +1,5 @@
 def and(x: Boolean, y: Boolean) : Boolean =
-  if (x)
-    if (y) true
-    else false
+  if (x) true
   else false
 
 def or(x: Boolean, y: Boolean) : Boolean =
