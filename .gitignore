@@ -1,7 +1,7 @@
 /workspace.xml
-*/project/**
-*/null/**
-*/target/**
-*/.idea/**
-*/*.conf
-*/*.sbt
+*/*/project/**
+*/*/null/**
+*/*/target/**
+*/*/.idea/**
+*/*/*.conf
+*/*/*.sbt
