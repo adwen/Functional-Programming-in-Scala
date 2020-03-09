@@ -11,6 +11,3 @@ def factorial(num: Int) =
   product(x => x, 1, num)
 
 factorial(4)
-
-// cannot write more general function for sum and product
-// because the starting accumulator for sum is 0 and product is 1
