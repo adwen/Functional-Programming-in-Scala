@@ -38,6 +38,10 @@ class FunSetSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    val s4 = union(s1, s2)
+    val s5 = union(s2, s3)
+    val s6 = union(s3, s4)
+    val s7 = union(s1, s3)
   }
 
   /**
@@ -47,7 +51,7 @@ class FunSetSuite {
    * Once you finish your implementation of "singletonSet", remvoe the
    * @Ignore annotation.
    */
-  @Ignore("not ready yet") @Test def `singleton set one contains one`: Unit = {
+   @Test def `singleton set one contains one`: Unit = {
 
     /**
      * We create a new instance of the "TestSets" trait, this gives us access
@@ -68,6 +72,48 @@ class FunSetSuite {
       assert(contains(s, 1), "Union 1")
       assert(contains(s, 2), "Union 2")
       assert(!contains(s, 3), "Union 3")
+    }
+
+  }
+  @Test def `intersect contains all elements of both sets`: Unit = {
+    new TestSets {
+      val s = intersect(s1, s4)
+      assert(contains(s, 1), "Union 1")
+      assert(!contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+      val t = intersect(s2, s3)
+      assert(!contains(t, 1), "Union 1")
+      assert(!contains(t, 2), "Union 2")
+      assert(!contains(t, 3), "Union 3")
+    }
+  }
+
+  @Test def `diff contains all elements in set1 but not in set2`: Unit = {
+    new TestSets {
+      val s = diff(s5, s4)
+      assert(!contains(s, 1), "Union 1")
+      assert(!contains(s, 2), "Union 2")
+      assert(contains(s, 3), "Union 3")
+    }
+  }
+
+  @Test def `forall cases`: Unit = {
+    new TestSets {
+      assert(forall(s2, s5), "Union 1")
+      assert(!forall(s2, s3), "Union 2")
+      assert(forall(s4, s6), "Union 3")
+      assert(!forall(s4, s5), "Union 4")
+      assert(!forall(s4, s7), "Union 5")
+    }
+  }
+
+  @Test def `exist cases`: Unit = {
+    new TestSets {
+      assert(exists(s2, s5), "exist 1")
+      assert(!exists(s2, s3), "exist 2")
+      assert(exists(s4, s6), "exist 3")
+      assert(exists(s4, s5), "exist 4")
+      assert(exists(s4, s7), "exist 5")
     }
   }
 
