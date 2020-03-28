@@ -188,7 +188,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  override def union(that: TweetSet): TweetSet = left union ((right union that)incl elem)
+  override def union(that: TweetSet): TweetSet = left.union(right.union(that.incl(elem)))
 
   /**
    * Returns the tweet from this set which has the greatest retweet count.
@@ -206,7 +206,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     if (left.isEmpty && right.isEmpty) elem
     else if (left.isEmpty) maxRetweet(right.mostRetweeted, elem)
     else if (right.isEmpty) maxRetweet(left.mostRetweeted, elem)
-    else maxRetweet(left.mostRetweeted,maxRetweet(left.mostRetweeted,elem))
+    else maxRetweet(left.mostRetweeted,maxRetweet(right.mostRetweeted,elem))
   }
 
 }
